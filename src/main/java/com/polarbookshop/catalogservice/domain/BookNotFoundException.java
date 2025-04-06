@@ -1,4 +1,4 @@
-package com.polarbookshop.catalog_service.domain;
+package com.polarbookshop.catalogservice.domain;
 
 public class BookNotFoundException extends RuntimeException {
     public BookNotFoundException(String isbn) {

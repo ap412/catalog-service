@@ -1,7 +1,7 @@
-package com.polarbookshop.catalog_service.web;
+package com.polarbookshop.catalogservice.web;
 
-import com.polarbookshop.catalog_service.domain.Book;
-import com.polarbookshop.catalog_service.domain.BookService;
+import com.polarbookshop.catalogservice.domain.Book;
+import com.polarbookshop.catalogservice.domain.BookService;
 
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
