@@ -1,2 +1,2 @@
 # catalog-service
-Bookshop catalog service
+Polar Bookshop catalog service
