@@ -13,6 +13,8 @@ java {
 	}
 }
 
+description = 'Provides functionality for managing the books in the catalog.'
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -62,6 +64,9 @@ tasks.named('test') {
 }
 
 tasks.named('bootBuildImage') {
+	imageName = "${project.name}:1.0.0"
+	environment = ["BP_JVM_VERSION" : "21.0.6+7"]
+	builder = "paketobuildpacks/builder-jammy-java-tiny:latest"
 	docker {
 		host= "unix://${System.getenv("XDG_RUNTIME_DIR")}/podman/podman.sock"
 		bindHostToBuilder.set(true)
