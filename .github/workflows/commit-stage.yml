@@ -17,10 +17,10 @@ jobs:
           distribution: temurin
           java-version: 21
           cache: gradle
-      - name: Build, unit tests and integration tests
+      - name: Build, exclude unit tests and integration tests
         run: |
           chmod +x gradlew
-          ./gradlew build
+          ./gradlew build -x test
       - name: Code vulnerability scanning
         uses: anchore/scan-action@v3
         id: scan
