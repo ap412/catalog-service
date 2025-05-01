@@ -4,7 +4,6 @@ import com.polarbookshop.catalogservice.domain.Book;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -21,7 +20,7 @@ class CatalogServiceApplicationTests {
 	@Test
 	void whenGetRequestWithIdThenBookReturned() {
 		var bookIsbn = "1231231230";
-		var bookToCreate = Book.of(bookIsbn, "Title", "Author", 9.90, "Polarsophia");
+		var bookToCreate = Book.of(bookIsbn, "Title", "Author", 9.90, "Polarsophia", );
 		Book expectedBook = webTestClient
 				.post()
 				.uri("/books")
@@ -71,7 +70,8 @@ class CatalogServiceApplicationTests {
 				.expectBody(Book.class).value(book -> assertThat(book).isNotNull())
 				.returnResult().getResponseBody();
 		var bookToUpdate = new Book(createdBook.bookId(), createdBook.isbn(), createdBook.title(), createdBook.author(), 7.95,
-				createdBook.publisher(), createdBook.createdDate(), createdBook.lastModifiedDate(), createdBook.version());
+				createdBook.publisher(), createdBook.createdDate(), createdBook.lastModifiedDate(), createdBook.createdBy(),
+				createdBook.lastModifiedBy(), createdBook.version());
 
 		webTestClient
 				.put()

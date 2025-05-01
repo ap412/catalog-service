@@ -5,10 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.annotation.Version;
+import org.springframework.data.annotation.*;
 
 import java.time.Instant;
 
@@ -39,8 +36,17 @@ public record Book (
         @LastModifiedDate
         Instant lastModifiedDate,
 
+        //Who created the entity
+        @CreatedBy
+        String createdBy,
+
+        //Who modified the entity the last time
+        @LastModifiedBy
+        String lastModifiedBy,
+
         @Version
         int version
+
 ){
         public static Book of(
                 String isbn, String title, String author, Double price, String publisher
@@ -48,7 +54,7 @@ public record Book (
                 // An entity is considered new when the ID is null
                 // and the version is 0
                 return new Book(
-                        null, isbn, title, author, price, publisher, null, null, 0
+                        null, isbn, title, author, price, publisher, null, null, null, null, 0
                 );
 
         }
